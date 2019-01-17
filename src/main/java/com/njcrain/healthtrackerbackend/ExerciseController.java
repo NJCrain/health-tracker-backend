@@ -23,8 +23,10 @@ public class ExerciseController {
 
     @PostMapping("/exercises")
     public void addExercise(Exercise e) {
-        LocalDateTime now = LocalDateTime.now();
-        e.setTimestamp(now.format(DateTimeFormatter.ofPattern("M/d/yy h:mma")));
+        if (e.getTimestamp() == null) {
+            LocalDateTime now = LocalDateTime.now();
+            e.setTimestamp(now.format(DateTimeFormatter.ofPattern("M/d/yy h:mma")));
+        }
         exerciseRepo.save(e);
     }
 }
