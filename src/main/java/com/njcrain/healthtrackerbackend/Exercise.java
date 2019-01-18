@@ -14,15 +14,10 @@ public class Exercise {
     private int quantity;
     private String description;
     private String timestamp;
+    private double latitude;
+    private double longitude;
 
     public Exercise() {}
-//
-//    public Exercise(String title, int quantity, String description, String timestamp) {
-//        this.title = title;
-//        this.quantity = quantity;
-//        this.description = description;
-//        this.timestamp = timestamp;
-//    }
 
     public String toString() {
         return this.title + ": " + this.description + " - " + this.timestamp;
@@ -58,5 +53,21 @@ public class Exercise {
 
     public String getTimestamp() {
         return this.timestamp;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }
