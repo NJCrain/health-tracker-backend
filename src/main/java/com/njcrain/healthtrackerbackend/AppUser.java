@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 //Class model structure for users.
 @Entity
@@ -17,6 +18,13 @@ public class AppUser implements UserDetails {
     @JsonIgnore
     private String password;
     private String avatarUri;
+    @ManyToMany
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")}
+    )
+    private List<AppRole> roles;
 
 
     public AppUser(String username, String password, String avatarUri, String firstName, String lastName) {
@@ -84,4 +92,11 @@ public class AppUser implements UserDetails {
         this.avatarUri = avatarUri;
     }
 
+    public List<AppRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<AppRole> roles) {
+        this.roles = roles;
+    }
 }
