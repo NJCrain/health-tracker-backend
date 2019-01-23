@@ -18,7 +18,7 @@ public class AppUser implements UserDetails {
     @JsonIgnore
     private String password;
     private String avatarUri;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",
             joinColumns = {@JoinColumn(name = "user_id")},
