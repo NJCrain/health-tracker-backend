@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+//The use of this class comes from https://github.com/nydiarra/springboot-jwt
 @Entity
 public class AppRole {
     @Id

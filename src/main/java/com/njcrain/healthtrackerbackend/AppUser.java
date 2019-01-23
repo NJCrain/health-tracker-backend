@@ -18,6 +18,7 @@ public class AppUser implements UserDetails {
     @JsonIgnore
     private String password;
     private String avatarUri;
+    //List of roles comes from https://github.com/nydiarra/springboot-jwt
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",
