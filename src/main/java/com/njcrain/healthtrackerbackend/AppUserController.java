@@ -34,6 +34,8 @@ public class AppUserController {
         userInfo.put("username", fullUser.getUsername());
         userInfo.put("avatarUri", fullUser.getAvatarUri());
         userInfo.put("id", fullUser.getId());
+        userInfo.put("homePageVisits", fullUser.getHomePageVisits());
+        userInfo.put("clickerScore", fullUser.getClickerScore());
         return userInfo;
 
 

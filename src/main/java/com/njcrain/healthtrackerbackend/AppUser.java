@@ -18,6 +18,10 @@ public class AppUser implements UserDetails {
     @JsonIgnore
     private String password;
     private String avatarUri;
+    @OneToMany(mappedBy = "user")
+    private List<Exercise> exercises;
+    private int homePageVisits;
+    private int clickerScore;
 
     public AppUser(String username, String password, String avatarUri, String firstName, String lastName) {
         this.username = username;
@@ -86,5 +90,29 @@ public class AppUser implements UserDetails {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public List<Exercise> getExercises() {
+        return exercises;
+    }
+
+    public void setExercises(List<Exercise> exercises) {
+        this.exercises = exercises;
+    }
+
+    public int getHomePageVisits() {
+        return homePageVisits;
+    }
+
+    public void setHomePageVisits(int homePageVisits) {
+        this.homePageVisits = homePageVisits;
+    }
+
+    public int getClickerScore() {
+        return clickerScore;
+    }
+
+    public void setClickerScore(int clickerScore) {
+        this.clickerScore = clickerScore;
     }
 }
