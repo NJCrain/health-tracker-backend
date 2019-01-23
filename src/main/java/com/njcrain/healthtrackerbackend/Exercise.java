@@ -1,5 +1,7 @@
 package com.njcrain.healthtrackerbackend;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class Exercise {
     private double latitude;
     private double longitude;
     @ManyToOne
+    @JsonIgnore
     private  AppUser user;
 
     public Exercise() {}
