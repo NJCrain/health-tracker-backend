@@ -18,14 +18,10 @@ public class AppUser implements UserDetails {
     @JsonIgnore
     private String password;
     private String avatarUri;
-    @ManyToMany
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id")}
-    )
-    private List<AppRole> roles;
-
+    @OneToMany(mappedBy = "user")
+    private List<Exercise> exercises;
+    private int homePageVisits;
+    private int clickerScore;
 
     public AppUser(String username, String password, String avatarUri, String firstName, String lastName) {
         this.username = username;
@@ -92,11 +88,31 @@ public class AppUser implements UserDetails {
         this.avatarUri = avatarUri;
     }
 
-    public List<AppRole> getRoles() {
-        return roles;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setRoles(List<AppRole> roles) {
-        this.roles = roles;
+    public List<Exercise> getExercises() {
+        return exercises;
+    }
+
+    public void setExercises(List<Exercise> exercises) {
+        this.exercises = exercises;
+    }
+
+    public int getHomePageVisits() {
+        return homePageVisits;
+    }
+
+    public void setHomePageVisits(int homePageVisits) {
+        this.homePageVisits = homePageVisits;
+    }
+
+    public int getClickerScore() {
+        return clickerScore;
+    }
+
+    public void setClickerScore(int clickerScore) {
+        this.clickerScore = clickerScore;
     }
 }

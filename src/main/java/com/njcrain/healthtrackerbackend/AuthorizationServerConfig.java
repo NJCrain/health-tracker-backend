@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -14,6 +15,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 
 import java.util.Arrays;
 
+//Built based off of https://medium.com/@nydiarra/secure-a-spring-boot-rest-api-with-json-web-token-reference-to-angular-integration-e57a25806c50
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
@@ -45,12 +47,15 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public void configure(ClientDetailsServiceConfigurer configurer) throws Exception {
         configurer
                 .inMemory()
                 .withClient(clientId)
-                .secret(clientSecret)
+                .secret(passwordEncoder.encode(clientSecret))
                 .authorizedGrantTypes(grantType)
                 .scopes(scopeRead, scopeWrite)
                 .resourceIds(resourceIds);

@@ -1,9 +1,8 @@
 package com.njcrain.healthtrackerbackend;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 public class Exercise {
@@ -16,6 +15,9 @@ public class Exercise {
     private String timestamp;
     private double latitude;
     private double longitude;
+    @ManyToOne
+    @JsonIgnore
+    private  AppUser user;
 
     public Exercise() {}
 
@@ -69,5 +71,13 @@ public class Exercise {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public AppUser getUser() {
+        return user;
+    }
+
+    public void setUser(AppUser user) {
+        this.user = user;
     }
 }

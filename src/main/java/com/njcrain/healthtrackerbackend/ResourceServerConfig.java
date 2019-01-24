@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 
+//Built based off of https://medium.com/@nydiarra/secure-a-spring-boot-rest-api-with-json-web-token-reference-to-angular-integration-e57a25806c50
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
@@ -29,10 +30,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .requestMatchers()
                 .and()
                 .authorizeRequests()
-                .anyRequest()
-                .permitAll();
-////                .antMatchers("/**", "/oauth/**").permitAll();
-//                .antMatchers("/actuator/**", "/api-docs/**").permitAll()
-//                .antMatchers("/springjwt/**" ).authenticated();
+                .anyRequest().permitAll()
+                .antMatchers("/user").authenticated()
+                .antMatchers("/exercises").authenticated();
     }
 }
