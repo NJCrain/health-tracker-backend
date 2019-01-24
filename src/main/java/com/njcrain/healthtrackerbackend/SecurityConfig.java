@@ -64,10 +64,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .realmName(securityRealm)
                 .and()
                 .csrf()
-                .disable();
-//                .authorizeRequests()
-//                .anyRequest()
-//                .permitAll();
+                .disable()
+                .authorizeRequests()
+                .anyRequest()
+                .permitAll();
 
     }
 

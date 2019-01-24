@@ -40,4 +40,9 @@ public class AppUserController {
 
 
     }
+
+    @GetMapping("/")
+    public String home() {
+        return "Hello";
+    }
 }
