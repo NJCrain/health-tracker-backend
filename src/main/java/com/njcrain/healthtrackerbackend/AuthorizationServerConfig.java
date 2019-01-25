@@ -72,6 +72,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .authenticationManager(authenticationManager);
     }
 
+    //Found this code at:
+    //https://stackoverflow.com/questions/48750257/spring-security-oauth2-cant-access-oauth-token-route
     @Override
     public void configure(AuthorizationServerSecurityConfigurer serverSecurityConfigurer){
         serverSecurityConfigurer
